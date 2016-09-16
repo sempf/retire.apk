@@ -1,0 +1,32 @@
+{
+	"freetype": {
+		"vulnerabilities" : [
+			{
+				"below" : "2.5.4",
+				"severity": "medium",
+				"identifiers": {"summary": "DOS"},
+				"info" : [ "https://www.cvedetails.com/cve/CVE-2014-9746/", "http://git.savannah.gnu.org/cgit/freetype/freetype2.git/commit/?id=8b281f83e8516535756f92dbf90940ac44bd45e1" ]
+			}
+		],
+		"extractors" : {
+			"filename"		: [ "freetype1(§§version§§)"],
+			"filecontent"	: [ "Free v(§§version§§) "],
+			"hashes"		: {}
+		}
+	},
+    "SWFObject": {
+		"vulnerabilities" : [
+			{
+				"below" : "2.8.6",
+				"severity": "medium",
+				"identifiers": {"summary": "DOS"},
+				"info" : [ "https://www.cvedetails.com/cve/CVE-2016-2330/" ]
+			}
+		],
+		"extractors" : {
+			"filename"		: [ "swfobject_(§§version§§)(.min)?\\.js"],
+			"filecontent"	: [ "SWFObject v(§§version§§) "],
+			"hashes"		: {}
+		}
+	},
+}
