@@ -31,10 +31,7 @@ import traceback
 import optparse
 import time
 import zipfile
-import csv
-import operator
 import re
-import codecs
 
 
 
@@ -45,7 +42,13 @@ def main():
 
     with zipfile.ZipFile(options.file, 'r') as apkFile:
         apkFiles = apkFile.namelist
-        for p in apkFiles(): print p
+        # Now I have a list of the files.
+        # It is big.
+        # I need to filter it based on the regex in the json file
+        # Let's start with one regex
+        regex = re.compile(r'freetype1')
+        match = filter(regex.search, apkFiles)
+        for p in match: print p
 
 if __name__ == '__main__':
     try:
