@@ -48,7 +48,7 @@ def main():
         # Let's start with one regex
         regex = re.compile(r'freetype1')
         match = filter(regex.search, apkFiles)
-        for p in match: print p
+        for p in match: print(p)
 
 if __name__ == '__main__':
     try:
@@ -59,21 +59,21 @@ if __name__ == '__main__':
         (options, args) = parser.parse_args()
         #if len(args) < 1:
         #    parser.error ('missing argument')
-        if options.verbose: print time.asctime()
+        if options.verbose: print(time.asctime())
 
         main()
 
-        if options.verbose: print time.asctime()
-        if options.verbose: print 'TOTAL TIME IN MINUTES:',
+        if options.verbose: print(time.asctime())
+        if options.verbose: print('TOTAL TIME IN MINUTES:')
         if options.verbose: print (time.time() - start_time) / 60.0
         sys.exit(0)
-    except KeyboardInterrupt, e: # Ctrl-C
+    except KeyboardInterrupt as e: # Ctrl-C
         raise e
-    except SystemExit, e: # sys.exit()
+    except SystemExit as e: # sys.exit()
         raise e
-    except Exception, e:
-        print 'ERROR, UNEXPECTED EXCEPTION'
-        print str(e)
+    except Exception as e:
+        print('ERROR, UNEXPECTED EXCEPTION')
+        print(str(e))
         traceback.print_exc()
         os._exit(1)
 
