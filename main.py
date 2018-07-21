@@ -39,16 +39,18 @@ import re
 def main():
 
     global options, args
-
-    with zipfile.ZipFile(options.file, 'r') as apkFile:
-        apkFiles = apkFile.namelist
+#   This is until I figure out how to send in parameters    
+#   with zipfile.ZipFile(options.file, 'r') as apkFile:
+    with zipfile.ZipFile("c:\\temp\\android.apk", 'r') as apkFile:
+        apkFiles = apkFile.namelist()
         # Now I have a list of the files.
         # It is big.
         # I need to filter it based on the regex in the json file
         # Let's start with one regex
         regex = re.compile(r'freetype1')
-        match = filter(regex.search, apkFiles)
-        for p in match: print(p)
+        apk_match = filter(regex.search, apkFiles)
+        for p in apk_match: print(p)
+        input("Press Enter to continue...")
 
 if __name__ == '__main__':
     try:

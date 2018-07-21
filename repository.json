@@ -14,7 +14,7 @@
 			"hashes"		: {}
 		}
 	},
-    "SWFObject": {
+  "SWFObject": {
 		"vulnerabilities" : [
 			{
 				"below" : "2.8.6",
