@@ -1,5 +1,7 @@
 # retire.apk
 retire.apk is a version of retire.js for Android APKs.  It is designed to read the filenames (and eventually the versions) of the libraries in an Android APK, then compare them to a repository of known vulnerable Android libraries.
+I recommend testing any changes you may make against the OWASP MSTG Hacking Playground..
+You can find it here: https://github.com/OWASP/MSTG-Hacking-Playground
 # It's not even started yet.
 I learned how to unzip files and get the list of filenames. That's about it. The rest, I am likely to steal from retire.js (with 100% complete credit).
 # Feel free to edit the repository
