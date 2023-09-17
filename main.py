@@ -36,23 +36,29 @@ import re
 
 
 
-def main():
+def main(pathToApk="c:\\temp\\android.apk"):
 
     global options, args
-#   This is until I figure out how to send in parameters    
-#   with zipfile.ZipFile(options.file, 'r') as apkFile:
-    with zipfile.ZipFile("c:\\temp\\android.apk", 'r') as apkFile:
-        apkFiles = apkFile.namelist()
-        # Now I have a list of the files.
-        # It is big.
-        # I need to filter it based on the regex in the json file
-        # Let's start with one regex
-        regex = re.compile(r'freetype1')
-        apk_match = filter(regex.search, apkFiles)
-        for p in apk_match: print(p)
-        input("Press Enter to continue...")
+    try:
+        with zipfile.ZipFile(pathToApk, 'r') as apkFile:
+            apkFiles = apkFile.namelist()
+            # Now I have a list of the files.
+            # It is big.
+            # I need to filter it based on the regex in the json file
+            # Let's start with one regex
+            regex = re.compile(r'freetype1')
+            apk_match = filter(regex.search, apkFiles)
+            for p in apk_match: print(p)
+            input("Press Enter to continue...")
+    except Exception as ex:
+        raise
 
 if __name__ == '__main__':
+    
+    # Make this passable innable
+    # actually we need to do that with main() too.
+    debug = True
+
     try:
         start_time = time.time()
         parser = optparse.OptionParser(formatter=optparse.TitledHelpFormatter(), usage=globals()['__doc__'], version='$Id$')
@@ -74,8 +80,9 @@ if __name__ == '__main__':
     except SystemExit as e: # sys.exit()
         raise e
     except Exception as e:
-        print('ERROR, UNEXPECTED EXCEPTION')
-        print(str(e))
-        traceback.print_exc()
+        print('Unexpected Exception')
+        if debug:
+            print(str(e))
+            traceback.print_exc()
         os._exit(1)
 
